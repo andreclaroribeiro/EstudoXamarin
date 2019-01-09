@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EstudoXamarin.App"
+             x:Class="EstudoXamarin.App.MainPage">
+
+    <StackLayout Padding="20" Spacing="10">
+
+        <Button Text="Carregar" Command="{Binding CarregarCommand}" IsEnabled="{Binding IsEnabled}"/>
+        
+        <ListView ItemsSource="{Binding Users}" x:Name="ListaUsuario">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2" Source="{Binding ImageUrl}" Aspect="AspectFill" />
+                            <Label Grid.Column="1" Text="{Binding first_name}" StyleClass="mainPageTitle" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding last_name}" StyleClass="mainPageSubtitle" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ActivityIndicator x:Name="actInd" 
+                           IsVisible="{Binding IsLoading}" 
+                           IsRunning="{Binding IsLoading}" Color="Blue"/>
+    </StackLayout>
+
+</ContentPage>
